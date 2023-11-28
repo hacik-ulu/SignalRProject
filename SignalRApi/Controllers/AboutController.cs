@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.AboutDto;
+using SignalR.DtoLayer.CategoryDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -12,60 +14,59 @@ namespace SignalRApi.Controllers
     {
         // Business katmanlı ile iletişim kuracak
         private readonly IAboutService _aboutService;
+        private readonly IMapper _mapper;
 
-        public AboutController(IAboutService aboutService)
+        public AboutController(IAboutService aboutService, IMapper mapper)
         {
             _aboutService = aboutService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult AboutList()
         {
-            var response = _aboutService.TGetListAll();
-            return Ok(response);
+            var aboutList = _mapper.Map<List<ResultAboutDto>>(_aboutService.TGetListAll());
+            return Ok(aboutList);
         }
 
         // Dto uygulama katmanları arasında veriyi transfer etmek için kullanılır.
         [HttpPost]
         public IActionResult CreateAbout(CreateAboutDto createAboutDto)
         {
-            About about = new About()
+            _aboutService.TAdd(new About()
             {
-                Title = createAboutDto.Title,
                 Description = createAboutDto.Description,
                 ImageUrl = createAboutDto.ImageUrl,
-            };
-            _aboutService.TAdd(about);
-            return Ok("Hakkımda kısmı başarıyla eklendi!");
+                Title = createAboutDto.Title,
+            });
+            return Ok("Hakkımda başarıyla eklendi!");
         }
 
         [HttpDelete]
         public IActionResult DeleteAbout(int id)
         {
-            var value = _aboutService.TGetById(id);
-            _aboutService.TDelete(value);
-            return Ok("Hakkımda kısmı başarıyla silindi!");
+            var deleteToAbout = _aboutService.TGetById(id);
+            _aboutService.TDelete(deleteToAbout);
+            return Ok("Hakkımda başarıyla silindi!");
         }
 
         [HttpPut]
         public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
-            About about2 = new()
+            _aboutService.TUpdate(new About()
             {
-                AboutID = updateAboutDto.AboutID,
-                ImageUrl = updateAboutDto.ImageUrl,
                 Description = updateAboutDto.Description,
+                ImageUrl = updateAboutDto.ImageUrl,
                 Title = updateAboutDto.Title,
-            };
-            _aboutService.TUpdate(about2);
-            return Ok("Hakkımda kısmı başarıyla güncellendi!");
+            });
+            return Ok("Hakkımda başarıyla güncellendi!");
         }
 
         [HttpGet("GetAbout")]
         public IActionResult GetAbout(int id)
         {
-            var response = _aboutService.TGetById(id);
-            return Ok(response);
+            var about = _aboutService.TGetById(id);
+            return Ok(about);
         }
     }
 }
