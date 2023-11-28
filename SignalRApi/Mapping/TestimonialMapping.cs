@@ -8,10 +8,10 @@ namespace SignalRApi.Mapping
     {
         public TestimonialMapping()
         {
-            CreateMap<Testimional, ResultTestimionalDto>().ReverseMap();
-            CreateMap<SocialMedia, CreateTestimionalDto>().ReverseMap();
-            CreateMap<SocialMedia, GetTestimionalDto>().ReverseMap();
-            CreateMap<SocialMedia, UpdateTestimionalDto>().ReverseMap();
+            CreateMap<Testimonial, ResultTestimonialDto>().ReverseMap();
+            CreateMap<SocialMedia, CreateTestimonialDto>().ReverseMap();
+            CreateMap<SocialMedia, GetTestimonialDto>().ReverseMap();
+            CreateMap<SocialMedia, UpdateTestimonialDto>().ReverseMap();
         }
     }
 }

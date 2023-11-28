@@ -43,7 +43,7 @@ builder.Services.AddScoped<IProductDal, EfProductDal>();
 
 // Testimonial API
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
-builder.Services.AddScoped<ITestimionalDal, EfTestimonialDal>();
+builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
 
 // SocialMedia API
 builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();

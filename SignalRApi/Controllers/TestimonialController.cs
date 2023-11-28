@@ -24,20 +24,20 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult TestimionalList()
         {
-            var testimionalList = _mapper.Map<List<ResultTestimionalDto>>(_testimonialService.TGetListAll());
+            var testimionalList = _mapper.Map<List<ResultTestimonialDto>>(_testimonialService.TGetListAll());
             return Ok(testimionalList);
         }
 
         [HttpPost]
-        public IActionResult CreateTestimional(CreateTestimionalDto createTestimionalDto)
+        public IActionResult CreateTestimional(CreateTestimonialDto createTestimonialDto)
         {
-            _testimonialService.TAdd(new Testimional
+            _testimonialService.TAdd(new Testimonial
             {
-                Comment = createTestimionalDto.Comment,
-                ImageUrl = createTestimionalDto.ImageUrl,
-                Name = createTestimionalDto.Name,
+                Comment = createTestimonialDto.Comment,
+                ImageUrl = createTestimonialDto.ImageUrl,
+                Name = createTestimonialDto.Name,
                 Status = true,
-                Title = createTestimionalDto.Title,
+                Title = createTestimonialDto.Title,
 
             });
             return Ok("Müşteri Yorum Bilgisi başarıyla eklendi!");
@@ -52,11 +52,11 @@ namespace SignalRApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateTestimional(UpdateTestimionalDto updateTestimionalDto)
+        public IActionResult UpdateTestimional(UpdateTestimonialDto updateTestimionalDto)
         {
-            _testimonialService.TUpdate(new Testimional
+            _testimonialService.TUpdate(new Testimonial
             {
-                TestimionalID = updateTestimionalDto.TestimionalID,
+                TestimonialID = updateTestimionalDto.TestimonialID,
                 Comment = updateTestimionalDto.Comment,
                 ImageUrl = updateTestimionalDto.ImageUrl,
                 Name = updateTestimionalDto.Name,
