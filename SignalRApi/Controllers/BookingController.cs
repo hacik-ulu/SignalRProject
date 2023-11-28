@@ -56,6 +56,7 @@ namespace SignalRApi.Controllers
         {            
             _bookingService.TUpdate(new Booking
             {
+                BookingID = updateBookingDto.BookingID,
                 Name= updateBookingDto.Name,
                 Date= updateBookingDto.Date,
                 Mail= updateBookingDto.Mail,

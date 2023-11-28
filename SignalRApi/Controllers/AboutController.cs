@@ -54,7 +54,8 @@ namespace SignalRApi.Controllers
         public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
             _aboutService.TUpdate(new About()
-            {
+            { 
+                AboutID = updateAboutDto.AboutID,
                 Description = updateAboutDto.Description,
                 ImageUrl = updateAboutDto.ImageUrl,
                 Title = updateAboutDto.Title,
