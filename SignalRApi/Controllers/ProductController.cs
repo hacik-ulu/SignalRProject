@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SignalR.BusinessLayer.Abstract;
+using SignalR.DataAccessLayer.Concrete;
 using SignalR.DtoLayer.FeatureDto;
 using SignalR.DtoLayer.ProductDto;
 using SignalR.EntityLayer.Entities;
@@ -14,11 +16,13 @@ namespace SignalRApi.Controllers
     {
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
+        private readonly SignalRContext _context;
 
-        public ProductController(IProductService productService, IMapper mapper)
+        public ProductController(IProductService productService, IMapper mapper,SignalRContext context)
         {
             _productService = productService;
             _mapper = mapper;
+            _context = context;
         }
 
         [HttpGet]
@@ -27,6 +31,24 @@ namespace SignalRApi.Controllers
             var productList = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll());
             return Ok(productList);
         }
+
+        [HttpGet("ProductListWithCategory")]
+        public IActionResult ProductListWithCategory()
+        {
+            var productList = _context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategory
+            {
+                Description = y.Description,
+                ImageUrl = y.ImageUrl,
+                Price = y.Price,
+                ProductID = y.ProductID,
+                ProductName = y.ProductName,
+                ProductStatus = y.ProductStatus,
+                CategoryName = y.Category.CategoryName
+            }).ToList();
+            return Ok(productList);
+        }
+
+
 
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
@@ -73,5 +95,6 @@ namespace SignalRApi.Controllers
             var product = _productService.TGetById(id);
             return Ok(product);
         }
+
     }
 }
