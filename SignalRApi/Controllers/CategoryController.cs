@@ -52,7 +52,7 @@ namespace SignalRApi.Controllers
             _categoryService.TUpdate(new Category()
             {
                 CategoryName = updateCategoryDto.CategoryName,
-                CategoryId = updateCategoryDto.CategoryId,
+                CategoryID = updateCategoryDto.CategoryId,
                 Status = updateCategoryDto.Status
             });
             return Ok("Kategori başarıyla güncellendi!");
