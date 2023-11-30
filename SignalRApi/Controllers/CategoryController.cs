@@ -38,7 +38,7 @@ namespace SignalRApi.Controllers
             return Ok("Kategori Eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id)
         {
             var deleteToCategory = _categoryService.TGetById(id);
@@ -58,7 +58,7 @@ namespace SignalRApi.Controllers
             return Ok("Kategori başarıyla güncellendi!");
         }
 
-        [HttpGet("GetCategory")]
+        [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
             var category = _mapper.Map<ResultCategoryDto>(_categoryService.TGetById(id));
