@@ -65,7 +65,7 @@ namespace SignalRWebUI.Controllers
             }
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> UpdateProduct(int id)
         {
             var client = _httpClientFactory.CreateClient();

@@ -33,19 +33,19 @@ namespace SignalRWebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateProduct()
+        public IActionResult CreateCategory()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+        public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
-            createProductDto.ProductStatus = true;
+            createCategoryDto.Status = true;
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createProductDto);
+            var jsonData = JsonConvert.SerializeObject(createCategoryDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7038/api/Product", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7038/api/Category", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -54,10 +54,10 @@ namespace SignalRWebUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7038/api/Product/{id}");
+            var responseMessage = await client.DeleteAsync($"https://localhost:7038/api/Category/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -65,7 +65,7 @@ namespace SignalRWebUI.Controllers
             }
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> UpdateCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
