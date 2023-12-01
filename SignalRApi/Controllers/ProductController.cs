@@ -50,7 +50,7 @@ namespace SignalRApi.Controllers
 
 
 
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
             _productService.TAdd(new Product
@@ -65,7 +65,7 @@ namespace SignalRApi.Controllers
             return Ok("Ürün başarıyla eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var deleteToProduct = _productService.TGetById(id);
