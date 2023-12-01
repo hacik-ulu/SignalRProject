@@ -18,7 +18,7 @@ namespace SignalRApi.Controllers
         private readonly IMapper _mapper;
         private readonly SignalRContext _context;
 
-        public ProductController(IProductService productService, IMapper mapper,SignalRContext context)
+        public ProductController(IProductService productService, IMapper mapper, SignalRContext context)
         {
             _productService = productService;
             _mapper = mapper;
@@ -50,7 +50,7 @@ namespace SignalRApi.Controllers
 
 
 
-        [HttpPost("Create")]
+        [HttpPost()]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
             _productService.TAdd(new Product
