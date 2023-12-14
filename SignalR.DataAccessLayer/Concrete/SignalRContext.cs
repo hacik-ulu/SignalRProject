@@ -13,7 +13,7 @@ namespace SignalR.DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=HACIKULU1\\SQLEXPRESS;initial Catalog=SignalRDb;integrated Security=true");
+            optionsBuilder.UseSqlServer("Server=HACIKULU\\SQLEXPRESS;initial Catalog=SignalRDb;integrated Security=true");
         }
 
         public DbSet<About> Abouts { get; set; }
