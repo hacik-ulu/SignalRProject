@@ -113,27 +113,13 @@ namespace SignalRWebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateProductDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7186/api/Product/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:7038/api/Product/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
             return View();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
