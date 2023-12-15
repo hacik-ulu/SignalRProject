@@ -77,20 +77,20 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateProduct(UpdateProductDto updateProductDto)
         {
-            _productService.TAdd(new Product
+            _productService.TUpdate(new Product()
             {
-                ProductID = updateProductDto.ProductID,
                 Description = updateProductDto.Description,
                 ImageUrl = updateProductDto.ImageUrl,
                 Price = updateProductDto.Price,
                 ProductName = updateProductDto.ProductName,
-                ProductStatus = updateProductDto.ProductStatus
-
+                ProductStatus = updateProductDto.ProductStatus,
+                ProductID = updateProductDto.ProductID,
+                CategoryID = updateProductDto.CategoryID
             });
-            return Ok("Ürün Bilgisi başarıyla güncellendi!");
+            return Ok("Ürün Bilgisi Güncellendi");
         }
 
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var product = _productService.TGetById(id);
