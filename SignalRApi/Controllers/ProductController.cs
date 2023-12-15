@@ -50,7 +50,7 @@ namespace SignalRApi.Controllers
 
 
 
-        [HttpPost()]
+        [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
             _productService.TAdd(new Product
@@ -59,7 +59,8 @@ namespace SignalRApi.Controllers
                 ImageUrl = createProductDto.ImageUrl,
                 Price = createProductDto.Price,
                 ProductName = createProductDto.ProductName,
-                ProductStatus = true
+                ProductStatus = true,
+                CategoryID = createProductDto.CategoryID
 
             });
             return Ok("Ürün başarıyla eklendi!");
