@@ -42,7 +42,7 @@ namespace SignalRApi.Controllers
             return Ok("Hakkımda başarıyla eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAbout(int id)
         {
             var deleteToAbout = _aboutService.TGetById(id);
@@ -54,7 +54,7 @@ namespace SignalRApi.Controllers
         public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
             _aboutService.TUpdate(new About()
-            { 
+            {
                 AboutID = updateAboutDto.AboutID,
                 Description = updateAboutDto.Description,
                 ImageUrl = updateAboutDto.ImageUrl,
@@ -63,7 +63,7 @@ namespace SignalRApi.Controllers
             return Ok("Hakkımda başarıyla güncellendi!");
         }
 
-        [HttpGet("GetAbout")]
+        [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var about = _aboutService.TGetById(id);
