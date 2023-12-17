@@ -33,17 +33,18 @@ namespace SignalRApi.Controllers
         {
             _featureService.TAdd(new Feature
             {
-               FirstDesc=createFeatureDto.FirstDesc,
-               FirstTitle=createFeatureDto.FirstTitle,
-               SecondDesc=createFeatureDto.SecondDesc,
-               SecondTitle = createFeatureDto.SecondTitle,
-               LastDesc=createFeatureDto.LastDesc,
-               LastTitle=createFeatureDto.LastTitle,
+                FirstTitle = createFeatureDto.FirstTitle,
+                SecondTitle = createFeatureDto.SecondTitle,
+                LastTitle = createFeatureDto.LastTitle,
+                FirstDesc = createFeatureDto.FirstDesc,
+                SecondDesc = createFeatureDto.SecondDesc,
+                LastDesc = createFeatureDto.LastDesc,
+
             });
             return Ok("Öne Çıkan bilgisi başarıyla eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFeature(int id)
         {
             var deleteToFeature = _featureService.TGetById(id);
@@ -57,17 +58,17 @@ namespace SignalRApi.Controllers
             _featureService.TUpdate(new Feature
             {
                 FeatureID = updateFeatureDto.FeatureID,
-                FirstDesc = updateFeatureDto.FirstDesc,
                 FirstTitle = updateFeatureDto.FirstTitle,
-                SecondDesc = updateFeatureDto.SecondDesc,
                 SecondTitle = updateFeatureDto.SecondTitle,
-                LastDesc = updateFeatureDto.LastDesc,
                 LastTitle = updateFeatureDto.LastTitle,
+                FirstDesc = updateFeatureDto.FirstDesc,
+                SecondDesc = updateFeatureDto.SecondDesc,
+                LastDesc = updateFeatureDto.LastDesc,
             });
             return Ok("Öne Çıkan bilgisi başarıyla güncellendi!");
         }
 
-        [HttpGet("GetFeature")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var feature = _featureService.TGetById(id);
