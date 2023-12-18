@@ -7,6 +7,24 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// CORS POLÝCY --> Dýþarý açýlan API'ýn sýnýrlarýný/konfigürasyonlarýný ayarlar.
+
+// CORS POLÝCY konfigürasyonlarýnýn eklenmesi.
+// builder ile api'nin izinlerini/sýnýrlarýný veriyoruz.
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", builder =>
+    {
+        builder.AllowAnyHeader() // Herhangi bir baþlýk
+        .AllowAnyMethod() // Herhangi bir metod 
+        .SetIsOriginAllowed((host) => true) // Herhangi bir host/saðlayýcý
+        .AllowCredentials(); // Herhangi bir kimlik
+    });
+});
+
+// SignalR kütüphanesinin eklenmesi.
+builder.Services.AddSignalR();
+
 // Add services to the container.
 // Dbcontext'in eklenmesi.
 // Auto mapper'ýn eklenmesi.
@@ -62,6 +80,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// CorsPolicy'nin kullanýlmasý.
+app.UseCors("CorsPolicy");  
 
 app.UseHttpsRedirection();
 
