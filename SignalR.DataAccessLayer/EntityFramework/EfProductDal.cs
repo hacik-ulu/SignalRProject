@@ -18,4 +18,10 @@ public class EfProductDal : GenericRepository<Product>, IProductDal
         var productsWithCategories = _context.Products.Include(x => x.Category).ToList();
         return productsWithCategories;
     }
+
+    public int ProductCount()
+    {
+        var productCount = _context.Products.Count();   
+        return productCount;
+    }
 }

@@ -12,8 +12,26 @@ namespace SignalR.DataAccessLayer.EntityFramework
 {
     public class EfCategoryDal : GenericRepository<Category>, ICategoryDal
     {
+        private readonly SignalRContext _context;
         public EfCategoryDal(SignalRContext context) : base(context)
         {
+            _context = context;
+        }
+
+        public int ActiveCategoryCount()
+        {
+            return _context.Categories.Where(x => x.Status == true).Count();
+        }
+
+        public int CategoryCount()
+        {
+            return _context.Categories.Count();
+
+        }
+
+        public int PassiveCategoryCount()
+        {
+            return _context.Categories.Where(x => x.Status == false).Count();
         }
     }
 }

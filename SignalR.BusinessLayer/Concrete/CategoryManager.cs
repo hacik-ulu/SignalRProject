@@ -19,9 +19,19 @@ namespace SignalR.BusinessLayer.Concrete
             _categoryService = categoryService;
         }
 
+        public int TActiveCategoryCount()
+        {
+            return _categoryService.ActiveCategoryCount();
+        }
+
         public void TAdd(Category entity)
         {
             _categoryService.Add(entity);
+        }
+
+        public int TCategoryCount()
+        {
+            return _categoryService.CategoryCount();
         }
 
         public void TDelete(Category entity)
@@ -37,6 +47,11 @@ namespace SignalR.BusinessLayer.Concrete
         public List<Category> TGetListAll()
         {
             return _categoryService.GetListAll();
+        }
+
+        public int TPassiveCategoryCount()
+        {
+            return _categoryService.PassiveCategoryCount();
         }
 
         public void TUpdate(Category entity)
