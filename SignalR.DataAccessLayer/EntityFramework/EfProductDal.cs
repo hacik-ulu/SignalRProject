@@ -36,4 +36,21 @@ public class EfProductDal : GenericRepository<Product>, IProductDal
         return _context.Products.Where(x => x.CategoryID == (_context.Categories.Where(y => y.CategoryName == "Hamburger").
        Select(z => z.CategoryID).FirstOrDefault())).Count();
     }
+
+    public string ProductNameByMaxPrice()
+    {
+        return _context.Products.Where(x => x.Price == (_context.Products.Max(y => y.Price))).
+            Select(z => z.ProductName).FirstOrDefault();
+    }
+
+    public string ProductNameByMinPrice()
+    {
+        return _context.Products.Where(x => x.Price == (_context.Products.Min(y => y.Price))).
+            Select(z => z.ProductName).FirstOrDefault();
+    }
+
+    public decimal ProductPriceAverage()
+    {
+        return _context.Products.Average(x => x.Price);
+    }
 }
