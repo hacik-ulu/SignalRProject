@@ -64,6 +64,14 @@ builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
 
+// Order API
+builder.Services.AddScoped<IOrderService, OrderManager>();
+builder.Services.AddScoped<IOrderDal, EfOrderDal>();
+
+//Order Details API
+builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
+builder.Services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
+
 // SocialMedia API
 builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
 builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
@@ -83,7 +91,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // CorsPolicy'nin kullanýlmasý.
-app.UseCors("CorsPolicy");  
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
