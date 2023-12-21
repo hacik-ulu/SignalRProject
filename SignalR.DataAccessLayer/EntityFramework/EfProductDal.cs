@@ -21,7 +21,19 @@ public class EfProductDal : GenericRepository<Product>, IProductDal
 
     public int ProductCount()
     {
-        var productCount = _context.Products.Count();   
+        var productCount = _context.Products.Count();
         return productCount;
+    }
+
+    public int ProductCountByCategoryNameDrink()
+    {
+        return _context.Products.Where(x => x.CategoryID == (_context.Categories.Where(y => y.CategoryName == "İçecek").
+        Select(z => z.CategoryID).FirstOrDefault())).Count();
+    }
+
+    public int ProductCountByCategoryNameHamburger()
+    {
+        return _context.Products.Where(x => x.CategoryID == (_context.Categories.Where(y => y.CategoryName == "Hamburger").
+       Select(z => z.CategoryID).FirstOrDefault())).Count();
     }
 }

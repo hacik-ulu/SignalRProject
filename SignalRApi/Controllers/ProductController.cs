@@ -39,6 +39,20 @@ namespace SignalRApi.Controllers
             return Ok(productCount);    
         }
 
+        [HttpGet("ProductCountByHamburger")]
+        public IActionResult ProductCountByHamburger()
+        {
+            var productCountByHamburger = _productService.TProductCountByCategoryNameHamburger();
+            return Ok(productCountByHamburger);
+        }
+
+        [HttpGet("ProductCountByDrink")]
+        public IActionResult ProductCountByDrink()
+        {
+            var productCountByDrink = _productService.TProductCountByCategoryNameDrink();
+            return Ok(productCountByDrink);
+        }
+
         [HttpGet("ProductListWithCategory")]
         public IActionResult ProductListWithCategory()
         {
