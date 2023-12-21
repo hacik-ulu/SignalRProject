@@ -3,6 +3,7 @@ using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.Repositories;
 using SignalR.EntityLayer.Entities;
+using System.Linq;
 
 public class EfProductDal : GenericRepository<Product>, IProductDal
 {
@@ -17,6 +18,11 @@ public class EfProductDal : GenericRepository<Product>, IProductDal
     {
         var productsWithCategories = _context.Products.Include(x => x.Category).ToList();
         return productsWithCategories;
+    }
+
+    public decimal ProductAveragePriceByHamburger()
+    {
+        return _context.Products.Where(x => x.CategoryID == _context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryID).FirstOrDefault()).Average(w => w.Price);
     }
 
     public int ProductCount()
