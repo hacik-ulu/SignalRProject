@@ -27,15 +27,25 @@ namespace SignalRApi.Hubs
             await Clients.All.SendAsync("ReceiveProductCount", sendProductCount);
 
             var activeCategoryCount = _categoryService.TActiveCategoryCount();
-            var passiveCategoryCount = _categoryService.TPassiveCategoryCount();
-
             await Clients.All.SendAsync("ReceiveActiveCategoryCount", activeCategoryCount);
+
+            var passiveCategoryCount = _categoryService.TPassiveCategoryCount();
             await Clients.All.SendAsync("ReceivePassiveCategoryCount", passiveCategoryCount);
+
+            var productCountByHamburger = _productService.TProductCountByCategoryNameHamburger();
+            await Clients.All.SendAsync("ReceiveProductCountByCategoryNameHamburger", productCountByHamburger);
+
+            var productCountByDrink = _productService.TProductCountByCategoryNameDrink();
+            await Clients.All.SendAsync("ReceiveProductCountByCategoryNameDrink", productCountByDrink);
+
+            var averagePrice = _productService.TProductPriceAverage();
+            await Clients.All.SendAsync("ReceiveProductPriceAverage", averagePrice);
+
         }
 
 
 
-       
+
 
 
 
