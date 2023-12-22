@@ -38,8 +38,12 @@ namespace SignalRApi.Hubs
             var productCountByDrink = _productService.TProductCountByCategoryNameDrink();
             await Clients.All.SendAsync("ReceiveProductCountByCategoryNameDrink", productCountByDrink);
 
-            var averagePrice = _productService.TProductPriceAverage();
-            await Clients.All.SendAsync("ReceiveProductPriceAverage", averagePrice);
+            var productPriceAverage = _productService.TProductPriceAverage();
+            await Clients.All.SendAsync("ReceiveProductPriceAverage", productPriceAverage.ToString("0.00") + "₺");
+
+            var productNameByMaxPrice = _productService.TProductNameByMaxPrice();
+            await Clients.All.SendAsync("ReceiveProductNameByMaxPrice", productNameByMaxPrice);
+
 
         }
 

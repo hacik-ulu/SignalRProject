@@ -27,32 +27,36 @@
                     }, 1000);
                 }).catch((err) => { console.log(err) });
 
-                connection.on("ReceiveCategoryCount", (value) => {
-                    $("#categorycount").text(value);
+                connection.on("ReceiveCategoryCount", (sendCategoryCount) => {
+                    $("#categorycount").text(sendCategoryCount);
                 });
 
-                connection.on("ReceiveProductCount", (value2) => {
-                    $("#productcount").text(value2);
+                connection.on("ReceiveProductCount", (sendProductCount) => {
+                    $("#productcount").text(sendProductCount);
                 });
 
-                connection.on("ReceiveActiveCategoryCount", (value3) => {
-                    $("#activecategorycount").text(value3);
+                connection.on("ReceiveActiveCategoryCount", (activeCategoryCount) => {
+                    $("#activecategorycount").text(activeCategoryCount);
                 });
 
-                connection.on("ReceivePassiveCategoryCount", (value4) => {
-                    $("#passivecategorycount").text(value4);
+                connection.on("ReceivePassiveCategoryCount", (passiveCategoryCount) => {
+                    $("#passivecategorycount").text(passiveCategoryCount);
                 });
 
-                connection.on("ReceiveProductCountByCategoryNameHamburger", (value5) => {
-                    $("#productcountbycategorynamehamburger").text(value5);
+                connection.on("ReceiveProductCountByCategoryNameHamburger", (productCountByHamburger) => {
+                    $("#productcountbycategorynamehamburger").text(productCountByHamburger);
                 });
 
-                connection.on("ReceiveProductCountByCategoryNameDrink", (value6) => {
-                    $("#productcountbycategorynamedrink").text(value6);
+                connection.on("ReceiveProductCountByCategoryNameDrink", (productCountByDrink) => {
+                    $("#productcountbycategorynamedrink").text(productCountByDrink);
                 });
 
-                connection.on("ReceiveProductPriceAverage", (value7) => {
-                    $("#productpriceaverage").text(value7 + " ₺ ");
+                connection.on("ReceiveProductPriceAverage", (productPriceAverage) => {
+                    $("#productpriceaverage").text(productPriceAverage);
+                });
+
+                connection.on("ReceiveProductNameByMaxPrice", (productNameByMaxPrice) => {
+                    $("#productnamebymaxprice").text(productNameByMaxPrice);
                 });
 
             });
@@ -200,13 +204,13 @@
                         <div class="row">
                             <div class="col-5">
                                 <div class="icon-big text-center">
-                                    <i class="la la-check-circle"></i>
+                                    <i class="la la-star"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
-                                    <p class="card-category">Order</p>
-                                    <h4 class="card-title">576</h4>
+                                    <p class="card-category">En Pahalı Ürün</p>
+                                    <h4 class="card-title" id="productnamebymaxprice"></h4>
                                 </div>
                             </div>
                         </div>
