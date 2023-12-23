@@ -80,6 +80,11 @@ namespace SignalRApi.Hubs
 
         }
 
+        public async Task SendProgress()
+        {
+            var totalMoneyCaseAmount = _moneyCaseService.TTotalMoneyCaseAmount();
+            await Clients.All.SendAsync("ReceiveTotalMoneyCaseAmount", totalMoneyCaseAmount.ToString("0.00") + "₺");
+        }
 
 
 
