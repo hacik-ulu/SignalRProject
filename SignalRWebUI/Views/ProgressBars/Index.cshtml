@@ -30,7 +30,14 @@
                     $("#totalmoneycaseamount").text(totalMoneyCaseAmount);
                 });
 
-                
+                connection.on("ReceiveActiveOrderCount", (activeOrderCount) => {
+                    $("#activeordercount").text(activeOrderCount);
+                });
+
+                connection.on("ReceiveMenuTableCount", (menuTableCount) => {
+                    $("#menutablecount").text(menuTableCount);
+                });
+
 
             });
         </script>
@@ -58,8 +65,8 @@
                             <div class="card-body">
                                 <div class="progress-card">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span class="text-muted">Profit</span>
-                                        <span class="text-muted fw-bold"> $3K</span>
+                                        <span class="text-muted"></span>
+                                        <span class="text-muted fw-bold"> </span>
                                     </div>
                                     <div class="progress mb-2" style="height: 7px;">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="55%"></div>
@@ -67,8 +74,8 @@
                                 </div>
                                 <div class="progress-card">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span class="text-muted">Orders</span>
-                                        <span class="text-muted fw-bold"> 576</span>
+                                        <span class="text-muted"></span>
+                                        <span class="text-muted fw-bold"> </span>
                                     </div>
                                     <div class="progress mb-2" style="height: 7px;">
                                         <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="65%"></div>
@@ -91,6 +98,51 @@
                                     <div class="progress mb-2" style="height: 7px;">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
                                     </div>
+                                    <div class="progress-card">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-muted">Open Rate</span>
+                                            <span class="text-muted fw-bold"> 60%</span>
+                                        </div>
+                                        <div class="progress mb-2" style="height: 7px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-card">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-muted">Open Rate</span>
+                                            <span class="text-muted fw-bold"> 60%</span>
+                                        </div>
+                                        <div class="progress mb-2" style="height: 7px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-card">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-muted">Open Rate</span>
+                                            <span class="text-muted fw-bold"> 60%</span>
+                                        </div>
+                                        <div class="progress mb-2" style="height: 7px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
+                                        </div>
+                                        <div class="progress-card">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span class="text-muted">Open Rate</span>
+                                                <span class="text-muted fw-bold"> 60%</span>
+                                            </div>
+                                            <div class="progress mb-2" style="height: 7px;">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-card">
+                                            <div class="d-flex justify-content-between mb-1">
+                                                <span class="text-muted">Open Rate</span>
+                                                <span class="text-muted fw-bold"> 60%</span>
+                                            </div>
+                                            <div class="progress mb-2" style="height: 7px;">
+                                                <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -107,8 +159,8 @@
                                     </div>
                                     <div class="col-7 d-flex align-items-center">
                                         <div class="numbers">
-                                            <p class="card-category">Number</p>
-                                            <h4 class="card-title">150GB</h4>
+                                            <p class="card-category">Aktif Siparişler</p>
+                                            <h4 class="card-title" id="activeordercount"></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -121,8 +173,8 @@
                                     </div>
                                     <div class="col-7 d-flex align-items-center">
                                         <div class="numbers">
-                                            <p class="card-category">Followers</p>
-                                            <h4 class="card-title">+45K</h4>
+                                            <p class="card-category">Masa Sayısı</p>
+                                            <h4 class="card-title" id="menutablecount"></h4>
                                         </div>
                                     </div>
                                 </div>
