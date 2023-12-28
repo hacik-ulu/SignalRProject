@@ -5,6 +5,7 @@ using SignalR.DataAccessLayer.Concrete;
 using SignalR.DataAccessLayer.EntityFramework;
 using SignalRApi.Hubs;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -91,6 +92,9 @@ builder.Services.AddScoped<ISliderDal, EfSliderDal>();
 // Basket API
 builder.Services.AddScoped<IBasketService, BasketManager>();
 builder.Services.AddScoped<IBasketDal, EfBasketDal>();
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
