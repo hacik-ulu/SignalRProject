@@ -15,7 +15,7 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Menümüz<
+                    Menümüz
                 </h2>
             </div>
 
@@ -133,10 +133,10 @@
             $.ajax({
                 type: 'POST',
                 data: { item: id },
-                url: "/Menu/AddBasket/" + id
+                url: "/Menu/AddBasket/" + id,
                 contentType: 'json',
                 success: function () {
-                    swal("Seçilen ürün ID:" + id, "Ürün seçimi yapıldı!", "success");
+                    swal("Seçilen ürün ID:" + id, "Ürün Sepete Eklendi!", "success");
 
                 }
             });
