@@ -25,18 +25,6 @@ namespace SignalRWebUI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddBasket()
-        {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createAboutDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7038/api/Basket", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
+        
     }
 }
