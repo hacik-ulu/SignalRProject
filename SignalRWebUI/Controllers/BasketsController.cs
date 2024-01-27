@@ -25,6 +25,23 @@ namespace SignalRWebUI.Controllers
             return View();
         }
 
-        
+        public async Task<IActionResult> DeleteBasket(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7038/api/Basket/{id}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                // Ürün başarıyla silindi, JavaScript ile alert göster
+                TempData["SuccessMessage"] = "Ürün başarıyla sepetten çıkarıldı!";
+                ViewBag.ShowAlert = true;
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+
+
     }
 }
