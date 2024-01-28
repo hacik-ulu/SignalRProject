@@ -51,22 +51,23 @@ namespace SignalRApi.Controllers
             return Ok("Rezervasyon başarıyla silindi!");
         }
 
-        [HttpPut]
-        public IActionResult UpdateBooking(UpdateBookingDto updateBookingDto)
-        {            
-            _bookingService.TUpdate(new Booking
-            {
-                BookingID = updateBookingDto.BookingID,
-                Name= updateBookingDto.Name,
-                Date= updateBookingDto.Date,
-                Mail= updateBookingDto.Mail,
-                PersonCount= updateBookingDto.PersonCount,
-                Phone= updateBookingDto.Phone,
-            });
-            return Ok("Rezervasyon başarıyla güncellendi!");
-        }
+		[HttpPut]
+		public IActionResult UpdateBooking(UpdateBookingDto updateBookingDto)
+		{
+			Booking booking = new Booking()
+			{
+				Mail = updateBookingDto.Mail,
+				BookingID = updateBookingDto.BookingID,
+				Name = updateBookingDto.Name,
+				PersonCount = updateBookingDto.PersonCount,
+				Phone = updateBookingDto.Phone,
+				Date = updateBookingDto.Date
+			};
+			_bookingService.TUpdate(booking);
+			return Ok("Rezervasyon Güncellendi");
+		}
 
-        [HttpGet("{id}")]
+		[HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var value = _bookingService.TGetById(id);

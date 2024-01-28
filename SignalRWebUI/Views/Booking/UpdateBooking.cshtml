@@ -1,7 +1,7 @@
 ﻿@model UpdateBookingDto
 
 @{
-    ViewData["Title"] = "UpdateBooking";
+    ViewData["Title"] = "CreateBooking";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -13,33 +13,41 @@
                 <form method="post">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title"> Rezervasyon Güncelleme Sayfası</div>
+                            <div class="card-title">Yeni Rezervasyon Girişi</div>
                         </div>
-                        <input type="hidden" asp-form="BookingID"/>
+                        <input type="hidden" asp-for="BookingID" />
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Ad Soyad</label>
-                                <input type="text" class="form-control" asp-for="Name" id="name">
+                                <label for="Name">Ad Soyad</label>
+                                <input type="text" class="form-control" asp-for="Name" id="Name">
                             </div>
+                        </div>
+                        <div class="card-body">
                             <div class="form-group">
-                                <label for="phone">Telefon</label>
-                                <input type="text" class="form-control" asp-for="Phone" id="phone">
+                                <label for="Phone">Telefon</label>
+                                <input type="text" class="form-control" asp-for="Phone" id="Phone">
                             </div>
+                        </div>
+                        <div class="card-body">
                             <div class="form-group">
-                                <label for="mail">Mail Adresi</label>
-                                <input type="email" class="form-control" asp-for="Mail" id="mail">
+                                <label for="Mail">Mail Adresi</label>
+                                <input type="email" class="form-control" asp-for="Mail" id="Mail">
                             </div>
+                        </div>
+                        <div class="card-body">
                             <div class="form-group">
-                                <label for="personcount">Kişi Sayısı</label>
-                                <input type="number" class="form-control" asp-for="PersonCount" id="personcount">
+                                <label for="PersonCount">Kişi Sayısı</label>
+                                <input type="number" class="form-control" asp-for="PersonCount" id="PersonCount">
                             </div>
+                        </div>
+                        <div class="card-body">
                             <div class="form-group">
-                                <label for="date">Rezervasyon Tarihi</label>
-                                <input type="date" class="form-control" asp-for="Date" id="date">
+                                <label for="Date">Rezervasyon Tarihi</label>
+                                <input type="date" class="form-control" asp-for="Date" id="Date">
                             </div>
                         </div>
                         <div class="card-action">
-                            <button class="btn btn-primary">Rezervasyon Güncelle</button>
+                            <button class="btn btn-primary">Rezervasyonu Güncelle</button>
                         </div>
                     </div>
                 </form>
@@ -47,5 +55,3 @@
         </div>
     </div>
 </div>
-
-
