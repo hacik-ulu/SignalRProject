@@ -9,5 +9,7 @@ namespace SignalR.DataAccessLayer.Abstract
 {
     public interface INotificationDal:IGenericDal<Notification>
     {
+        // Durumu "Okunmamış" olanları gösterecek olan metod.
+        int NotificationCountByStatusFalse();
     }
 }

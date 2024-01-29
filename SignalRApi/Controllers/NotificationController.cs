@@ -22,5 +22,12 @@ namespace SignalRApi.Controllers
             return Ok(getNotificationList);
         }
 
+        // Status = False, Okunmamış Bildirimleri Getirecek.
+        [HttpGet("GetNotificationCountByStatusFalse")]
+        public IActionResult GetNotificationCountByStatusFalse()
+        {
+            return Ok(_notificationService.TNotificationCountByStatusFalse());
+        }
+
     }
 }
