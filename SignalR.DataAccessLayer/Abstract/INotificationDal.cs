@@ -11,5 +11,6 @@ namespace SignalR.DataAccessLayer.Abstract
     {
         // Durumu "Okunmamış" olanları gösterecek olan metod.
         int NotificationCountByStatusFalse();
+        List<Notification> GetAllNotificationByFalse();
     }
 }
