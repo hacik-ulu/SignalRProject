@@ -13,13 +13,12 @@
 
 <div class="content">
     <div class="container-fluid">
-
+        <h4 class="page-title">Anlık Masa Durumları Sayfası</h4>
         <script type="text/javascript">
             $(document).ready(() => {
                 var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7038/SignalRHub").build();
                 $("#connstatus").text(connection.state);
 
-                // SendCategoryCount metoduna istekte bulunuyoruz.
                 connection.start().then(() => {
                     $("#connstatus").text(connection.state);
                     setInterval(() => {
@@ -33,8 +32,11 @@
                     let tablehtml = '<div class="row">';
 
                     getMenuTableStatus.forEach((item) => {
+                        let color = item.status ? "card card-stats card-danger" : "card card-stats card-success";
+                        let statusText = item.status ? "Masa Dolu" : "Masa Boş";
+
                         tablehtml += `<div class="col-md-3">
-                                            <div class="card card-stats card-success">
+                                            <div class="${color}">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-5">
@@ -45,7 +47,7 @@
                                                         <div class="col-7 d-flex align-items-center">
                                                             <div class="numbers">
                                                                 <p class="card-category">${item.name}</p>
-                                                                <h4 class="card-title">${item.status}</h4>
+                                                                <h4 class="card-title">${statusText}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -58,24 +60,9 @@
                 });
             });
         </script>
-
-
-
-        <h4 class="page-title">Anlık Masa Durumları Sayfası</h4>
-            @*  @foreach (var item in Model)
-            {
-            // if (item.Status == false)
-            // {
-            //     color = "card card-stats card-success";
-            //     status = "Masa Boş";
-            // }
-            // else
-            // {
-            //     color = "card card-stats card-danger";
-            //     status = "Masa Dolu";
-            // } *@
-            <div id="statuslist"></div>
-            @* } *@
-        
+        <div id="statuslist"></div>
     </div>
 </div>
+
+
+@* bölüm 19 / 147.video   *@
