@@ -261,6 +261,30 @@ namespace SignalR.DataAccessLayer.Migrations
                     b.ToTable("MenuTables");
                 });
 
+            modelBuilder.Entity("SignalR.EntityLayer.Entities.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageId"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("SignalR.EntityLayer.Entities.MoneyCase", b =>
                 {
                     b.Property<int>("MoneyCaseID")
