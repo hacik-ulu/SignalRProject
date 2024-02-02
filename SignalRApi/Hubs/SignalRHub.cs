@@ -127,9 +127,5 @@ namespace SignalRApi.Hubs
         }
 
 
-
-
-
-
     }
 }
