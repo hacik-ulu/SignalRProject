@@ -141,7 +141,6 @@ namespace SignalRApi.Hubs
             await base.OnDisconnectedAsync(exception);
         }
 
-        // Bölüm 21/156.video.
 
     }
 }
