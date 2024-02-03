@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
+using System.Configuration;
 
 namespace SignalRApi.Hubs
 {
@@ -28,7 +29,7 @@ namespace SignalRApi.Hubs
             _bookingService = bookingService;
             _notificationService = notificationService;
         }
-
+        public static int clientCount { get; set; } = 0;
         public async Task SendStatistic()
         {
             var sendCategoryCount = _categoryService.TCategoryCount();
@@ -126,6 +127,21 @@ namespace SignalRApi.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
+        public override async Task OnConnectedAsync()
+        {
+            clientCount++;
+            await Clients.All.SendAsync("ReceiveClientCount", clientCount);
+            await base.OnConnectedAsync();
+        }
+
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            clientCount--;
+            await Clients.All.SendAsync("ReceiveClientCount", clientCount);
+            await base.OnDisconnectedAsync(exception);
+        }
+
+        // Bölüm 21/156.video.
 
     }
 }
