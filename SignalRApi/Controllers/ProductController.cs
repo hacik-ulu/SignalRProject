@@ -28,15 +28,15 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult ProductList()
         {
-            var productList = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll());
+            var productList = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll().Where(x => x.ProductStatus == true));
             return Ok(productList);
         }
 
         [HttpGet("ProductCount")]
-        public IActionResult ProductCount() 
-        { 
-            var productCount =_productService.TProductCount();
-            return Ok(productCount);    
+        public IActionResult ProductCount()
+        {
+            var productCount = _productService.TProductCount();
+            return Ok(productCount);
         }
 
         [HttpGet("ProductNameByMaxPrice")]
@@ -93,7 +93,7 @@ namespace SignalRApi.Controllers
                 ProductName = y.ProductName,
                 ProductStatus = y.ProductStatus,
                 CategoryName = y.Category.CategoryName
-            }).ToList();
+            }).Where(x => x.ProductStatus == true).ToList();
             return Ok(productList);
         }
 

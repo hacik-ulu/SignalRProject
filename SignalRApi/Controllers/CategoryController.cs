@@ -23,7 +23,9 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult CategoryList()
         {
-            var categoryList = _mapper.Map<List<ResultCategoryDto>>(_categoryService.TGetListAll());
+            var categoryList = _mapper.Map<List<ResultCategoryDto>>(
+                _categoryService.TGetListAll().Where(x => x.Status == true)
+            );
             return Ok(categoryList);
         }
 
