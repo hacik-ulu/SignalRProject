@@ -106,3 +106,5 @@ namespace SignalRWebUI.Controllers
         }
     }
 }
+
+//DESCRİPTİON NULL DİYO FORM KISMINDA DESCRİPTİONU Bİ EKLEYELİM BİR DAHA DENEYELİM
