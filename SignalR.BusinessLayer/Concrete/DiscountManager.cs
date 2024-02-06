@@ -1,5 +1,6 @@
 ﻿using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Abstract;
+using SignalR.DataAccessLayer.Concrete;
 using SignalR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ namespace SignalR.BusinessLayer.Concrete
         {
             _discountDal = discountDal;
         }
-
         public void TAdd(Discount entity)
         {
             _discountDal.Add(entity);
@@ -46,6 +46,11 @@ namespace SignalR.BusinessLayer.Concrete
         public List<Discount> TGetListAll()
         {
             return _discountDal.GetListAll();
+        }
+
+        public List<Discount> TGetListByStatusTrue()
+        {
+            return _discountDal.GetListByStatusTrue();
         }
 
         public void TUpdate(Discount entity)
