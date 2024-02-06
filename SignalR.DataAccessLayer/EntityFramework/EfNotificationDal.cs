@@ -20,10 +20,10 @@ namespace SignalR.DataAccessLayer.EntityFramework
 
         public List<Notification> GetAllNotificationByFalse()
         {
-            return _context.Notifications.Where(x=>x.Status==false).ToList();
+            return _context.Notifications.Where(x => x.Status == false).ToList();
         }
 
-     
+
         public int NotificationCountByStatusFalse()
         {
             var notificationCount = _context.Notifications.Where(x => x.Status == false).Count();
@@ -33,17 +33,32 @@ namespace SignalR.DataAccessLayer.EntityFramework
         // Bildiirimlerin henüz okunmamış olarak işaretlenmesi.
         public void NotificationStatusChangeToFalse(int id)
         {
-            var valueStatusToFalse = _context.Notifications.Find(id);
-            valueStatusToFalse.Status = false;
-            _context.SaveChanges();
+            var notification = _context.Notifications.Find(id);
+
+            if (notification != null && notification.Status)
+            {
+                notification.Status = false;
+                _context.SaveChanges();
+            }
         }
 
         // Bildiirimlerin okunmuş olarak işaretlenmesi.
         public void NotificationStatusChangeToTrue(int id)
         {
-            var valueStatuesToTrue = _context.Notifications.Find(id);
-            valueStatuesToTrue.Status = true;
-            _context.SaveChanges();
+            var notification = _context.Notifications.Find(id);
+            if (notification != null)
+            {
+                if (!notification.Status)
+                {
+                    notification.Status = true;
+                }
+                else
+                {
+                    notification.Status = false;
+                }
+
+                _context.SaveChanges();
+            }
         }
     }
 }

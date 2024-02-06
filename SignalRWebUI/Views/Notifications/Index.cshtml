@@ -1,9 +1,14 @@
-﻿@model List<ResultNotificationDto>
+﻿@using System.Globalization
+@model List<ResultNotificationDto>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+    CultureInfo trCulture = new CultureInfo("tr-TR");
+
 }
+
 
 <div class="content">
     <div class="container-fluid">
@@ -34,11 +39,21 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
+                                    count++;
                                     <tr>
-                                        <td>@item.NotificationID</td>
+                                        <td>@count</td>
                                         <td>@item.Description</td>
-                                        <td>@item.Date</td>
-                                        <td>@item.Status</td>
+                                        <td>
+                                            <span>
+                                                @item.Date.ToString("d MMMM yyyy - HH:mm", trCulture)
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <span class="@((item.Status) ? "text" : "text")">
+                                                @((item.Status) ? "Okundu olarak işaretlendi" : "Okunmadı olarak işaretlendi")
+                                            </span>
+                                        </td>
                                         <td><a href="/Notifications/DeleteNotification/@item.NotificationID" class="btn btn-outline-danger">Sil</a></td>
                                         <td><a href="/Notifications/UpdateNotification/@item.NotificationID" class="btn btn-outline-success">Güncelle</a></td>
                                         <td><a href="/Notifications/NotificationStatusChangeToTrue/@item.NotificationID" class="btn btn-outline-warning">Okundu</a></td>
