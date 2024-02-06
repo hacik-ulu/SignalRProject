@@ -1,7 +1,7 @@
-﻿@model CreateFeatureDto
+﻿@model UpdateSliderDto
 
 @{
-    ViewData["Title"] = "CreateFeature";
+    ViewData["Title"] = "UpdateSlider";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -15,34 +15,35 @@
                         <div class="card-header">
                             <div class="card-title">Yeni Öne Çıkan Alan Girişi</div>
                         </div>
+                        <input type="hidden" asp-for="SliderID" />
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="firsttitle">İlk Başlığı Giriniz</label>
-                                <input type="text" class="form-control" asp-for="FirstTitle" id="firsttitle">
+                                <input type="text" class="form-control" asp-for="Title1" id="firsttitle">
                             </div>
                             <div class="form-group">
                                 <label for="secondtitle">İkinci Başlığı Giriniz</label>
-                                <input type="text" class="form-control" asp-for="SecondTitle" id="secondtitle">
+                                <input type="text" class="form-control" asp-for="Title2" id="secondtitle">
                             </div>
                             <div class="form-group">
                                 <label for="lasttitle">Son Başlığı Giriniz</label>
-                                <input type="text" class="form-control" asp-for="LastTitle" id="lasttitle">
+                                <input type="text" class="form-control" asp-for="Title3" id="lasttitle">
                             </div>
                             <div class="form-group">
                                 <label for="firstdesc">İlk Açıklamayı Giriniz</label>
-                                <input type="text" class="form-control" asp-for="FirstDesc" id="firstdesc">
+                                <input type="text" class="form-control" asp-for="Description1" id="firstdesc">
                             </div>
                             <div class="form-group">
                                 <label for="seconddesc">İkinci Açıklamayı Giriniz</label>
-                                <input type="text" class="form-control" asp-for="SecondDesc" id="seconddesc">
+                                <input type="text" class="form-control" asp-for="Description2" id="seconddesc">
                             </div>
                             <div class="form-group">
                                 <label for="lastdesc">Son Açıklamayı Giriniz</label>
-                                <input type="text" class="form-control" asp-for="LastDesc" id="lastdesc">
+                                <input type="text" class="form-control" asp-for="Description3" id="lastdesc">
                             </div>
                         </div>
                         <div class="card-action">
-                            <button class="btn btn-primary">Öne Çıkan Alanı Ekle</button>
+                            <button class="btn btn-primary">Öne Çıkan Alanı Güncelle</button>
                         </div>
                     </div>
                 </form>
@@ -50,5 +51,7 @@
         </div>
     </div>
 </div>
+
+
 
 

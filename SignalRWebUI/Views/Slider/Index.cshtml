@@ -1,7 +1,8 @@
-﻿@model List<ResultFeatureDto>
+﻿@model List<ResultSliderDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="content">
@@ -16,6 +17,7 @@
                     <div class="card-body">
                         <div class="card-sub">
                             Ana Sayfada öne çıkan alan ile ilgili işlemleri aşağıdan gerçekleştirebilirsiniz.
+                            <strong>Lütfen sadece 1 adet öne çıkan alan verisi oluşturun.</strong>
                         </div>
                         <table class="table mt-3">
                             <thead>
@@ -34,21 +36,22 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
+                                    count++;
                                     <tr>
-                                        <td>@item.FeatureID</td>
-                                        <td>@item.FirstTitle</td>
-                                        <td>@item.SecondTitle</td>
-                                        <td>@item.LastTitle</td>
-                                        <td>@item.FirstDesc</td>
-                                        <td>@item.SecondDesc</td>
-                                        <td>@item.LastDesc</td>
-                                        <td><a href="/Feature/DeleteFeature/@item.FeatureID" class="btn btn-outline-danger">Sil</a></td>
-                                        <td><a href="/Feature/UpdateFeature/@item.FeatureID" class="btn btn-outline-success">Güncelle</a></td>
+                                        <th>@count</th>
+                                        <td>@item.Title1</td>
+                                        <td>@item.Title2</td>
+                                        <td>@item.Title3</td>
+                                        <td>@item.Description1</td>
+                                        <td>@item.Description2</td>
+                                        <td>@item.Description3</td>
+                                        <td><a href="/Slider/DeleteSlider/@item.SliderID" class="btn btn-outline-danger">Sil</a></td>
+                                        <td><a href="/Slider/UpdateSlider/@item.SliderID" class="btn btn-outline-success">Güncelle</a></td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
-                        <a href="/Feature/CreateFeature/" class="btn btn-outline-primary">Yeni Öne Çıkan Alan Girişi</a>
+                        <a href="/Slider/CreateSlider/" class="btn btn-outline-primary">Yeni Öne Çıkan Alan Girişi</a>
                     </div>
                 </div>
             </div>
