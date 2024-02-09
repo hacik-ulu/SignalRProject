@@ -45,12 +45,16 @@
                     </thead>
                     @foreach (var item in Model)
                     {
+                        // Vergili sipariş toplam ücreti için.
                         basketTotalPrice = Model.Sum(x => x.Price);
                         basketTotalPriceWithTax = basketTotalPrice * 0.2m;
                         basketTotalPriceWithTaxWithMathRound = Math.Round(basketTotalPriceWithTax, 2);
                         basketTotalPriceWithTax = basketTotalPriceWithTaxWithMathRound;
 
                         totalOrderPrice = basketTotalPrice + basketTotalPriceWithTax;
+
+                        // Vergisiz her bir ürünün tablo üzerinden Toplam fiyatını hesaplamak için.
+                        item.TotalPrice = Math.Round(item.Count * item.Price, 2);
 
                         count++;
                         <tbody class="align-middle">
