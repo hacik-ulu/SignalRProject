@@ -12,7 +12,7 @@ namespace SignalRApi.Controllers
     [ApiController]
     public class AboutController : ControllerBase
     {
-        // Business katmanlı ile iletişim kuracak
+        // Business katmanı ile iletişim kuracak
         private readonly IAboutService _aboutService;
         private readonly IMapper _mapper;
 

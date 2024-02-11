@@ -99,6 +99,31 @@ namespace SignalRApi.Hubs
             var menuTableCount = _menuTableService.TMenuTableCount();
             await Clients.All.SendAsync("ReceiveMenuTableCount", menuTableCount);
 
+            // Ortalama Ürün Fiyatı 
+            var productPriceAverage = _productService.TProductPriceAverage();
+            await Clients.All.SendAsync("ReceiveProductPriceAverage", productPriceAverage);
+
+            // Ortalama Hamburger Miktarı
+            var hamburgerAveragePrice = _productService.TProductAveragePriceByHamburger();
+            await Clients.All.SendAsync("ReceiveProductAveragePriceByHamburger", hamburgerAveragePrice);
+
+            // İçecek Sayısı
+            var drinkCount = _productService.TProductCountByCategoryNameDrink();
+            await Clients.All.SendAsync("ReceiveProductCountByCategoryNameDrink", drinkCount);
+
+            var totalOrderCount = _orderService.TTotalOrderCount();
+            await Clients.All.SendAsync("ReceiveTotalOrderCount", totalOrderCount);
+
+            var productPriceBySteakBurger = _productService.TProductPriceBySteakBurger();
+            await Clients.All.SendAsync("ReceiveProductPriceBySteakBurger", productPriceBySteakBurger);
+
+            var totalPriceByDrinkCategory = _productService.TTotalPriceByDrinkCategory();
+            await Clients.All.SendAsync("ReceiveTotalPriceByDrinkCategory", totalPriceByDrinkCategory);
+
+            var totalPriceBySaladCategory = _productService.TTotalPriceBySaladCategory();
+            await Clients.All.SendAsync("ReceiveTotalPriceBySaladCategory", totalPriceBySaladCategory);
+
+
         }
 
         public async Task GetBookingList()

@@ -39,6 +39,20 @@ namespace SignalRApi.Controllers
             return Ok(productCount);
         }
 
+        [HttpGet("TotalPriceByDrinkCategory")]
+        public IActionResult TotalPriceByDrinkCategory()
+        {
+            var productDrinkSumPrice = _productService.TTotalPriceByDrinkCategory();
+            return Ok(productDrinkSumPrice);
+        } 
+        
+        [HttpGet("TotalPriceBySaladCategory")]
+        public IActionResult TotalPriceBySaladCategory()
+        {
+            var totalPriceBySaladCategory = _productService.TTotalPriceBySaladCategory();
+            return Ok(totalPriceBySaladCategory);
+        }
+
         [HttpGet("ProductNameByMaxPrice")]
         public IActionResult ProductNameByMaxPrice()
         {
@@ -78,6 +92,13 @@ namespace SignalRApi.Controllers
         public IActionResult ProductPriceAverage()
         {
             var productPriceAverage = _productService.TProductPriceAverage();
+            return Ok(productPriceAverage);
+        }
+
+        [HttpGet("ProductPriceBySteakBurger")]
+        public IActionResult ProductPriceBySteakBurger()
+        {
+            var productPriceAverage = _productService.TProductPriceBySteakBurger();
             return Ok(productPriceAverage);
         }
 
