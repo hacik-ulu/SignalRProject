@@ -28,7 +28,19 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult ProductList()
         {
-            var productList = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll().Where(x => x.ProductStatus == true));
+            //var productList = _mapper.Map<List<ResultProductDto>>(_productService.TGetListAll().Where(x => x.ProductStatus == true));
+            //return Ok(productList);
+
+            var productList = _context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategory
+            {
+                Description = y.Description,
+                ImageUrl = y.ImageUrl,
+                Price = y.Price,
+                ProductID = y.ProductID,
+                ProductName = y.ProductName,
+                ProductStatus = y.ProductStatus,
+                CategoryName = y.Category.CategoryName
+            }).Where(x => x.ProductStatus == true).ToList();
             return Ok(productList);
         }
 
