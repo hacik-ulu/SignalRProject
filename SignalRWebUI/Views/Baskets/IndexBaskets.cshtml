@@ -1,0 +1,64 @@
+﻿@model List<ResultBasketDto>
+
+@{
+    ViewData["Title"] = "IndexBaskets";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+    string description = "Ürünlerin servise hazır olması gerekiyor.";
+}
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Sepet Siparişleri Sayfası</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Sepet Siparişleri Listesi</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-sub">
+                            Sepet kısmından verilmiş olan siparişlerin listesi.
+                        </div>
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col"># </th>
+                                    <th scope="col">Fiyat</th>
+                                    <th scope="col">Adet</th>
+                                    <th scope="col">Ürün Adı</th>
+                                    <th scope="col">Açıklama</th>
+                                </tr>
+                            </thead>
+                            @if (Model.Any())
+                            {
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Count</td>
+                                            <td>@item.Product.ProductName</td>
+                                            <td>@description</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" style="font-size: 18px; font-weight: bold; text-align: left;">Sepette ürün yok!</td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

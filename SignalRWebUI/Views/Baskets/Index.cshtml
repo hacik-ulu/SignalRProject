@@ -99,7 +99,7 @@
                             <h5><span id="totalpricewithkdv">@totalOrderPrice</span>₺</h5>
                         </div>
                         <br />
-                        <button id="btnchecked" class="btn btn-block btn-warning font-weight-bold my-3">Siparişi Tamamla</button>
+                        <button id="btnchecked" class="btn btn-block btn-warning font-weight-bold my-3" onclick="completeOrder()">Siparişi Tamamla</button>
                     </div>
                 </div>
             </div>
@@ -108,9 +108,29 @@
 
 
 
+
     @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
 
     @await Component.InvokeAsync("_UILayoutScriptComponentPartial")
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function completeOrder() {
+            // SweetAlert2 ile özel bir bildirim göster
+            Swal.fire({
+                icon: 'success',
+                title: 'Sipariş Tamamlandı!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            // Ardından sayfayı yönlendir
+            setTimeout(function () {
+                window.location.href = '/Default/Index';
+            }, 1500); // Bildirim süresi kadar bekleyip yönlendirme yapar
+        }
+    </script>
+
 
 </body>
 

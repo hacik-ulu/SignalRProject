@@ -46,21 +46,24 @@ namespace SignalRApi.Controllers
             return Ok(basketList);
         }
 
+
+
         [HttpPost]
         public IActionResult CreateBasket(CreateBasketDto createBasketDto)
         {
-
+            //Bahçe 01 --> 45
+            using var context = new SignalRContext();
             _basketService.TAdd(new Basket()
             {
                 ProductID = createBasketDto.ProductID,
                 Count = 1,
                 MenuTableID = 3,
-                Price = _context.Products.Where(x => x.ProductID == createBasketDto.ProductID).Select(y => y.Price).FirstOrDefault(),
-                TotalPrice = 0,
-
+                Price = context.Products.Where(x => x.ProductID == createBasketDto.ProductID).Select(y => y.Price).FirstOrDefault(),
+                TotalPrice = createBasketDto.TotalPrice
             });
             return Ok();
         }
+
 
         [HttpDelete("{id}")]
         public IActionResult DeleteBasket(int id)

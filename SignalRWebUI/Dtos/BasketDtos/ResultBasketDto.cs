@@ -1,4 +1,6 @@
-﻿namespace SignalRWebUI.Dtos.BasketDtos
+﻿using SignalR.EntityLayer.Entities;
+
+namespace SignalRWebUI.Dtos.BasketDtos
 {
     public class ResultBasketDto
     {
@@ -7,7 +9,7 @@
         public decimal Count { get; set; }
         public decimal TotalPrice { get; set; }
         public int ProductID { get; set; }
-        public int MenuTableID { get; set; }
+        public Product Product { get; set; }
         public string ProductName { get; set; }
         
     }
