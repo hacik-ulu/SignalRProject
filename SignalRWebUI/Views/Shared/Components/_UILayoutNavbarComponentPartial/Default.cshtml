@@ -4,9 +4,26 @@
     </div>
     <!-- header section strats -->
     <header class="header_section">
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                // Navbar ikonuna tıklandığında
+                $("#sendMessageLink").on("click", function () {
+                    // Sayfanın en üstüne kadar kaydır
+                    $("html, body").animate({ scrollTop: 0 }, "fast");
+
+                    // Partial view'ın olduğu bölüme odaklan
+                    var partialViewTop = $("#sendMessageContainer").offset().top;
+                    $("html, body").animate({ scrollTop: partialViewTop }, "fast");
+                });
+            });
+        </script>
+
         <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="/Default/Index/">
                     <span>
                         SignalR Restoran
                     </span>
@@ -32,7 +49,7 @@
                         </li>
                     </ul>
                     <div class="user_option">
-                        <a href="" class="user_link">
+                        <a href="javascript:void(0);" class="user_link" id="sendMessageLink">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
                         <a class="cart_link" href="/Baskets/Index/">
